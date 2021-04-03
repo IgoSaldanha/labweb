@@ -1,38 +1,188 @@
-.App {
-  text-align: center;
+:root {
+
+  --top-bar: #191A21;
+  --content-bar: #21222C;
+  --toolbar: #343746;
+  --scroll: rgba(24,25,31,0.5);
+  --hover-button: #282A36;
+  --content-area: #282A36;
+  --icons: #5F6E9D;
+  --text-area: #B9B9B9;
+  --available: #43B581;
+  --unavailable: #DE1313;
+  --line: #18191f;
+  --contact-item-selected: #313341;
+  --text-color: #FFFFFF;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.light-mode:root{
+
+  --top-bar: #9F9F9F;
+  --content-bar: #D6D6D6;
+  --toolbar: #B1B1B1;
+  --scroll: rgba(152,157,185,0.5);
+  --hover-button: #EAEAEA;
+  --content-area: #EAEAEA;
+  --icons: #5F6E9D;
+  --text-area: #B9B9B9;
+  --available: #43B581;
+  --unavailable: #DE1313;
+  --line: #989db9;
+  --contact-item-selected: #9F9F9F;
+  --text-color: #313131;
+;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ------ Configurações gerais do projeto ------ */
+/* --------------------------------------------- */
+
+*{
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+body{
+
+  background-color: var(--content-area);
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+
+}
+
+/* ------ Janela pricipal do app (viewport) ------ */
+/* ----------------------------------------------- */
+
+.app-window{
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  background-color: var(--content-area);
+}
+
+
+/* ------ top-bar ------ */
+/* --------------------- */
+
+.top-bar{
+
+  height: 10%;
+  max-height: 100px;
+  border-bottom: 0.5px solid var(--line);
+  background-color: var(--top-bar);
+
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.user-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-brand{
+    color: var(--text-color);
+    margin-left: 1rem;
+}
+/* ------ Conteudo da aplicação ------ */
+/* ----------------------------------- */
+
+.app-content{
+    height: 90%;
+    display: flex;
+    background-color: var(--content-area);
+
+}
+
+/* ------ Barra de ferramentas ------ */
+
+.toolbar{
+    width: 5%;
+    max-width: 120px;
+    background-color: var(--toolbar);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-right: 0.5px solid var(--line);
+}
+
+.tool-button{
+
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+
+    color: var(--icons);
+}
+
+.tool-button:hover{
+    background-color: var(--hover-button);
+    transition-duration: 0.2s;
+}
+
+/* ------ Barra lateral - sidebar ------ */
+
+.sidebar{
+    
+    width: 20%;
+    max-width: 500px;
+    background-color: var(--content-bar);
+
+    display: flex;
+    flex-direction: column;
+
+}
+.search{
+    border-bottom: var(--line);
+    padding: 10px 10px;
+}
+.search-input{
+
+    background-color: var(--text-area);
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.search-input input{
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+.chatlist{
+    
+    background-color: var(--content-bar);
+    overflow-y: auto;
+}
+
+.chatlist::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+
+.chatlist::-webkit-scrollbar-thumb{
+    background-color: var(--scroll);
+    border-radius: 4px;
+
+}
+/* ------ Area de janelas ------ */
+
+.content-area{
+
 }
