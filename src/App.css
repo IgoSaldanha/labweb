@@ -138,7 +138,7 @@ body{
     width: 20%;
     max-width: 500px;
     background-color: var(--content-bar);
-
+    border-right: 1px solid var(--line);
     display: flex;
     flex-direction: column;
 
@@ -184,5 +184,5 @@ body{
 /* ------ Area de janelas ------ */
 
 .content-area{
-
+    flex: 1;
 }

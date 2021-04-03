@@ -11,18 +11,35 @@ import SearchIcon from '@material-ui/icons/Search';
 
 // AREA DE IMPORTAÇÃO DOS COMONENTES
 import ChatListItem from './components/chatListItem/index'
-
-//AREA DE FUNÇÕES
-
-const html = document.querySelector('html');
-
-function toogleTheme() {
-    html.classList.toggle('light-mode')
-}
+import ChatIntro from './components/chatIntro/index'
+import ChatWindow from './components/chatWindow/index'
+import profileWindow from './components/profileWindow/index'
 
 export default () => {
 
-    const [chatList, setChatList] = useState([{},{},{},{},{},{},{},{},{},{},{}]);
+    //DECLARAÇÃO DE CONSTANTES
+    const html = document.querySelector('html');
+    const [chatList, setChatList] = useState([
+        {chatId: 1, title: 'Zecá Urubu', image: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4' },
+        {chatId: 2, title: 'Pica Pau', image: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4' },
+        {chatId: 3, title: 'Leoncio', image: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4' },
+        {chatId: 4, title: 'Meu chapa', image: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4' },
+    ]);
+
+    const [user, setUser] = useState([
+        {userId: 1, name: 'Igo Saldanha', avatar: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4'}
+    ])
+
+    const [activeChat, setActiveChat] = useState({});
+    const [activeProfileWindow, setActiveProfileWindow] = useState({});
+    
+
+    //AREA DE FUNÇÕES
+    function toogleTheme() {
+        html.classList.toggle('light-mode')
+    }
+
+   
 
     return (
         <div className="app-window">
@@ -31,7 +48,10 @@ export default () => {
             <div className="top-bar">
 
                 <p className="app-brand">LOGO</p>
-                <img className="user-avatar" src="https://avatars.githubusercontent.com/u/59894220?s=60&v=4" alt=""/>
+                <img 
+                    onClick={()=> setActiveProfileWindow(user.userId)}
+                    className="user-avatar" src="https://avatars.githubusercontent.com/u/59894220?s=60&v=4" alt=""
+                />
             
             </div>
 
@@ -46,9 +66,15 @@ export default () => {
                     <div onClick={toogleTheme} className="tool-button">
                         <Brightness6Icon style={{ fontSize: 30 }}/>
                     </div>
+
+                    <div className="tool-button">
+                        <PlaylistAddCheckIcon style={{ fontSize: 30 }}/>
+                    </div>
+
                     <div className="tool-button">
                         <ChatBubbleIcon style={{ fontSize: 30 }}/>
                     </div>
+                    
                     <div className="tool-button">
                         <PowerSettingsNewIcon style={{ fontSize: 30 }}/>
                     </div>
@@ -71,7 +97,9 @@ export default () => {
                         {chatList.map((item, key)=>(
                             <ChatListItem
                                 key={key}
-
+                                data={item}
+                                active={activeChat.chatId === chatList[key].chatId }
+                                onClick={()=> setActiveChat(chatList[key])}
                             />
                         ))}
                     </div>
@@ -79,7 +107,16 @@ export default () => {
                 </div>
 
                 {/* Area de conteudo */}
-                <div className="content-area"></div>
+
+                <div className="content-area">
+                    {activeChat.chatId !== undefined &&
+                        <ChatWindow/>
+                    }
+                    {activeChat.chatId === undefined &&
+                        <ChatIntro/>
+                    }
+
+                </div>
 
             </div>
 

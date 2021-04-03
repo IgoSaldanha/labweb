@@ -1,11 +1,15 @@
 import React from 'react';
 import './style.css'
 
-export default () => {
+export default ({onClick, active, data}) => {
     return (
-        <div className="chatListItem">
-            <img className="chatListItem-avatar" src="https://avatars.githubusercontent.com/u/59894220?s=60&v=4" alt=""/>
-            <div className="chatListItemName">Igo Saldanha</div>
+        <div 
+            className="chatListItem"
+            className={`chatListItem ${active?'active': ''}`}
+            onClick={onClick}
+        >
+            <img className="chatListItem-avatar" src={data.image} alt=""/>
+            <div className="chatListItemName">{data.title}</div>
         </div>
   );
 }
