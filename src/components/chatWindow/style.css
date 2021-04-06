@@ -46,6 +46,8 @@
   align-items: center;
   color: var(--icons);
   cursor: pointer;
+  overflow: hidden;
+  transition: all ease 0.3s;
 }
 
 .chatWindow-button:hover{
@@ -98,5 +100,22 @@
     display: flex;
     margin: 0 10px;
 
+}
+
+aside.emoji-picker-react{
+  width: auto;
+  box-shadow: none;
+  background: var(--text-area);
+}
+
+aside.emoji-picker-react .emoji-group:before{
+  background: none;
+  color: black;
+
+}
+
+.chatWindow-emojiarea{
+  overflow-y: hidden;
+  transition: all ease 0.5s;
 
 }
