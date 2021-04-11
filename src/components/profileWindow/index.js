@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './style.css';
 
-export default () => {
+export default (showProfile) => {
+
+  const showp = showProfile;
+
   return (
-    <div> Profile window</div>
+    <div className="profileWindow"  style={{left: showp? 3000: '25%'}}>
+      <div>
+        {console.log(showp)}
+      </div>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 // AREA DE IMPORTAÇÃO DOS ICONES
@@ -6,19 +6,19 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import Brightness6Icon from '@material-ui/icons/Brightness6';
-import DonutLargeIcon from '@material-ui/icons/DonutLarge';
+//import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import SearchIcon from '@material-ui/icons/Search';
 
 // AREA DE IMPORTAÇÃO DOS COMONENTES
 import ChatListItem from './components/chatListItem/index'
 import ChatIntro from './components/chatIntro/index'
 import ChatWindow from './components/chatWindow/index'
-import profileWindow from './components/profileWindow/index'
+import NewChat from './components/newChat/index'
+import ProfileWindow from './components/profileWindow/index'
 
 export default () => {
 
     //DECLARAÇÃO DE CONSTANTES
-    const html = document.querySelector('html');
     const [chatList, setChatList] = useState([
         {chatId: 1, title: 'Zecá Urubu', image: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4' },
         {chatId: 2, title: 'Pica Pau', image: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4' },
@@ -26,32 +26,53 @@ export default () => {
         {chatId: 4, title: 'Meu chapa', image: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4' },
     ]);
 
-    const [user, setUser] = useState([
-        {userId: 1, name: 'Igo Saldanha', avatar: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4'}
-    ])
+    // STATE DE USUARIO
+    const [user, setUser] = useState({
+        id: 123,
+        avatar: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4',
+        name: 'Igo Saldanha'
+    });
 
+    // MOSTRAR OU NÃO JANELA DE PERFIL
+    const [showProfileWindow, setShowProfileWindow] = useState(false);
+    const handleToogleProfileWindow = () =>{
+        setShowProfileWindow(false)
+        console.log(showProfileWindow)
+    }
+
+    // MOSTRAR OU NÃO BARRA DE NEW CHAT
+    const [showNewChat, setShowNewChat] = useState(false);
+
+    const handleToogleNewChat = () =>{
+        setShowNewChat(!showNewChat)
+    }
+
+
+    // STATE PARA GURADAR CHAT ATIVO
     const [activeChat, setActiveChat] = useState({});
-    const [activeProfileWindow, setActiveProfileWindow] = useState({});
-    
 
-    //AREA DE FUNÇÕES
+    // FUNÇÃO PARA TROCA DE TEMA
+    const html = document.querySelector('html');
     function toogleTheme() {
         html.classList.toggle('light-mode')
     }
 
-   
 
+    
     return (
+
         <div className="app-window">
 
             {/* Barra de cima, marca do app e imagen do perfil logado */}
             <div className="top-bar">
 
                 <p className="app-brand">LOGO</p>
+
+                <div className="avatar" >
                 <img 
-                    onClick={()=> setActiveProfileWindow(user.userId)}
-                    className="user-avatar" src="https://avatars.githubusercontent.com/u/59894220?s=60&v=4" alt=""
+                    className="user-avatar" src={user.avatar} alt=""
                 />
+                </div>
             
             </div>
 
@@ -68,10 +89,10 @@ export default () => {
                     </div>
 
                     <div className="tool-button">
-                        <PlaylistAddCheckIcon style={{ fontSize: 30 }}/>
+                        <PlaylistAddCheckIcon onClick={handleToogleProfileWindow} style={{ fontSize: 30 }}/>
                     </div>
 
-                    <div className="tool-button">
+                    <div onClick={handleToogleNewChat} className="tool-button">
                         <ChatBubbleIcon style={{ fontSize: 30 }}/>
                     </div>
                     
@@ -83,7 +104,14 @@ export default () => {
 
                 {/* Sidebar */}
                 <div className="sidebar">
-                    
+
+                    <NewChat
+                        chatList={chatList}
+                        user={user}
+                        show={showNewChat}
+                        setShow={setShowNewChat}
+                    />
+
                     {/* Campo de busca */}
                     <div className="search">
                         <div className="search-input">
@@ -103,14 +131,23 @@ export default () => {
                             />
                         ))}
                     </div>
-
                 </div>
 
                 {/* Area de conteudo */}
+                
+                      
+                
 
                 <div className="content-area">
+                    
+                    <ProfileWindow
+                        showProfile={showProfileWindow}
+                    />
+
                     {activeChat.chatId !== undefined &&
-                        <ChatWindow/>
+                        <ChatWindow
+                            user={user}
+                        />
                     }
                     {activeChat.chatId === undefined &&
                         <ChatIntro/>

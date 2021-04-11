@@ -36,3 +36,14 @@
     font-size: 1rem;
     color: var(--text-color);
 }
+
+.newChat-list::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+  
+.newChat-list::-webkit-scrollbar-thumb{
+    background-color: var(--scroll);
+    border-radius: 4px;
+  
+}

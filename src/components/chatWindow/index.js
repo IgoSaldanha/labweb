@@ -1,6 +1,5 @@
-import React,  { useState } from 'react';
+import React,  { useState, useEffect, useRef } from 'react';
 import EmojiPicker from 'emoji-picker-react';
-
 import './style.css'
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -9,26 +8,126 @@ import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 import CloseIcon from '@material-ui/icons/Close';
+import MessageItem from './messageItem/index'
 
-export default () => {
+export default ({user}) => {
 
+    // FUNÇÃO DE DIGITAÇÃO POR VOZ ATRAVÉS DO BOTÃO DE MICROFONE //
+
+    const [listening, setListening] = useState(false);
+
+    let recognition = null;
+        // Testa se o navegador suporta
+    let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition !== undefined) {
+        recognition = new SpeechRecognition();
+    }
+
+        // evento da captura de voz
+    const handleMicClick = () =>{
+        if (recognition !== null) {
+
+            recognition.onstart = () => {
+                setListening(true);
+            }
+
+            recognition.onend = () => {
+                setListening(false);
+            }
+
+            // colocar o texto no area de input
+            recognition.onresult = (e) => {
+                setText(e.results[0][0].transcript);
+            }
+
+            recognition.start();
+        }
+    }
+
+    // CONFIGURÇÃO DO EMOJI PICKER
     const [emojiOpen, setEmojiOpen] = useState(false)
 
-    // AREA DE FUNÇÕES
-
-    const handleEmojiClick = () =>{
-
+        // Captura o objeto e cocatena o emoji no campo de texto através do evento
+    const handleEmojiClick = (e, emojiObject) =>{
+        setText( text + emojiObject.emoji)
     }
+
+        // Adicionar o emoji Picker em tela, atráves do State emojiOpen
     const handleOpenEmoji = () =>{
         setEmojiOpen(true);
     }
+
+        // retirar o emoji Picker da tela atráves do State emojiOpen
     const handleCloseEmoji = () =>{
         setEmojiOpen(false);
     }
 
+    // STATE PARA GUARDAR TEXTO DO IMPUT
+    const [text, setText] = useState()
+    
+    // STATE DE LISTA DE MENSAGENS
+    const [list, setList] = useState([
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'},
+        {author: 123, body: 'Olá, com esta?'},
+        {author: 1234, body: 'Muito bem, e você?'},
+        {author: 123, body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, velit quas pariatur at, assumenda error similique, culpa sit natus officia possimus. Beatae numquam asperiores officia nulla suscipit debitis vel explicabo.'}
+        
+    ])
+
+    // Controlar o Body, para colocar o Scroll no final
+    const body = useRef();
+
+
+    useEffect(()=>{
+
+        if (body.current.scrollHeight > body.current.offsetHeight) {
+            body.current.scrollTop = body.current.scrollHeight - body.current.offsetHeight;
+        }
+
+    },[list]);
+
+    // FUNÇÃO DE ENVIO DE MENSAGENS
+    const handleSendClick = () =>{ 
+    }
+
+
+
   return (
+
+    // JANELA PRINCIPAL DE CHAT //
     <div className="chatWindow">
-       <div className="chatWindow-header">
+        
+        {/* CABEÇALHO */}
+        <div className="chatWindow-header">
 
            <div className="chatWindow-header-info">
                 <img className="chatWindow-avatar" src='https://avatars.githubusercontent.com/u/59894220?s=60&v=4' alt=""/>
@@ -40,23 +139,37 @@ export default () => {
                     <MoreVertIcon style={{ fontSize: 30 }}/>
                 </div>
            </div>
-       </div>
+        </div>
 
-       <div className="chatWindow-body"></div>
+        {/* ÁREA DE MENSAGENS */}
+        <div ref={body} className="chatWindow-body">
+            {
+                list.map((item, key)=>(
+                    <MessageItem 
+                        key={key}
+                        data={item}
+                        user={user}
+                    />
+                ))
+            }
+        </div>
 
-       <div 
+        {/* AREA DO EMOJI PIECKER */}
+        <div 
             className="chatWindow-emojiarea" 
             style={{height: emojiOpen ? '320px' : '0px'}}
         >
-                <EmojiPicker
-                    onEmojiClick={handleEmojiClick}
-                    disableSearchBar
-                    disableSkinTonePicker
-                />    
-       </div>
+            <EmojiPicker
+                onEmojiClick={handleEmojiClick}
+                disableSearchBar
+                disableSkinTonePicker
+            />    
+        </div>
 
-       <div className="chatWindow-footer">
+        {/* ÁREA DE CONFIGURÇÃO E ENVIO DE MENSAGENS */}
+        <div className="chatWindow-footer">
 
+            {/* BOTÕES DE EMOJI E ENVIO DE ARQUIVOS */}
             <div className="chatWindow-before">
                 
                 <div 
@@ -77,15 +190,34 @@ export default () => {
                 <div className="chatWindow-button">
                     <AddPhotoAlternateIcon style={{ fontSize: 30 }}/>
                 </div>  
-            </div>
-            <div className="chatWindow-input-area">
-                <input className="chatWindow-input" type="text" placeholder="Digite uma mensagen"/>
+
             </div>
 
+            {/* ÁREA DE DIGITAÇÃO DA MENSAGEN */}
+            <div className="chatWindow-input-area">
+                <input
+                    className="chatWindow-input"
+                    type="text"
+                    placeholder="Digite uma mensagen"
+                    value={text}
+                    onChange={e=>setText(e.target.value)}
+                />
+            </div>
+
+            {/* BOTÕES DE MICROFONE E ENVIO DE MENSAGEM */}
             <div className="chatWindow-later">
-                <div className="chatWindow-button">
-                    <SendIcon style={{ fontSize: 30 }}/>
-                </div>
+
+                {text === '' &&
+                    <div onClick={handleMicClick} className="chatWindow-button">
+                        <MicIcon style={{ fontSize: 30, color: listening ? '43B581' : ''}}/>
+                    </div>
+                }
+                {text !== '' &&
+                    <div onClick={handleSendClick} className="chatWindow-button">
+                        <SendIcon style={{ fontSize: 30 }}/>
+                    </div>
+                }
+
             </div>
        </div>
 

@@ -1,0 +1,12 @@
+.profileWindow{
+  width: 75%;
+  height: 100%;
+  left: 3000px;
+  background-color: brown;
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  transition: all ease 0.5s;
+
+}

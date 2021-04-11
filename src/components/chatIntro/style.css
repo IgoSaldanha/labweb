@@ -6,6 +6,7 @@
   background-color: var(--content-area);
   height: 100%;
   padding: 20px 80px;
+  transition: all ease 0.5s;
 }
 
 .chatIntro h1{

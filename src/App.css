@@ -1,37 +1,43 @@
 :root {
 
-  --top-bar: #191A21;
-  --content-bar: #21222C;
-  --toolbar: #343746;
-  --scroll: rgba(24,25,31,0.5);
-  --hover-button: #282A36;
-  --content-area: #282A36;
-  --icons: #5F6E9D;
-  --text-area: #B9B9B9;
-  --available: #43B581;
-  --unavailable: #DE1313;
-  --line: #18191f;
-  --contact-item-selected: #313341;
-  --text-color: #FFFFFF;
+    --top-bar: #191A21;
+    --content-bar: #21222C;
+    --toolbar: #343746;
+    --scroll: rgba(24,25,31,0.5);
+    --hover-button: #282A36;
+    --content-area: #282A36;
+    --icons: #5F6E9D;
+    --text-area: #B9B9B9;
+    --available: #43B581;
+    --unavailable: #DE1313;
+    --line: #18191f;
+    --contact-item-selected: #313341;
+    --text-color: #FFFFFF;
+    --bg-message-user: #404046; 
+    --bg-message-contact: #191A21;
+    --text-message-date: rgba(238, 238, 238, 0.8);
+    --text-message: #EEEEEE;
 }
 
 .light-mode:root{
 
-  --top-bar: #9F9F9F;
-  --content-bar: #D6D6D6;
-  --toolbar: #B1B1B1;
-  --scroll: rgba(152,157,185,0.5);
-  --hover-button: #EAEAEA;
-  --content-area: #EAEAEA;
-  --icons: #5F6E9D;
-  --text-area: #B9B9B9;
-  --available: #43B581;
-  --unavailable: #DE1313;
-  --line: #989db9;
-  --contact-item-selected: #9F9F9F;
-  --text-color: #313131;
-;
-
+    --top-bar: #9F9F9F;
+    --content-bar: #D6D6D6;
+    --toolbar: #B1B1B1;
+    --scroll: rgba(152,157,185,0.5);
+    --hover-button: #EAEAEA;
+    --content-area: #EAEAEA;
+    --icons: #5F6E9D;
+    --text-area: #B9B9B9;
+    --available: #43B581;
+    --unavailable: #DE1313;
+    --line: #989db9;
+    --contact-item-selected: #9F9F9F;
+    --text-color: #313131;
+    --bg-message-user: #9F9F9F;
+    --bg-message-contact: #38393f;
+    --text-message-date: rgba(238, 238, 238, 0.8);
+    --text-message: #EEEEEE;
 }
 
 /* ------ Configurações gerais do projeto ------ */
@@ -43,11 +49,9 @@
 
 
 body{
-
-  background-color: var(--content-area);
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-
+    background-color: var(--content-area);
+    margin: 0;
+    font-family: 'Lato', sans-serif;
 }
 
 /* ------ Janela pricipal do app (viewport) ------ */
@@ -58,6 +62,7 @@ body{
   flex-direction: column;
   height: 100vh;
   background-color: var(--content-area);
+
 }
 
 
@@ -74,6 +79,15 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all ease 0.5s;
+
+}
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 1rem;
 }
 
 .user-avatar{
@@ -110,6 +124,8 @@ body{
     justify-content: flex-end;
     align-items: center;
     border-right: 0.5px solid var(--line);
+    transition: all ease 0.5s;
+
 }
 
 .tool-button{
@@ -128,7 +144,7 @@ body{
 
 .tool-button:hover{
     background-color: var(--hover-button);
-    transition-duration: 0.2s;
+    transition-duration: 0.1s;
 }
 
 /* ------ Barra lateral - sidebar ------ */
@@ -141,6 +157,7 @@ body{
     border-right: 1px solid var(--line);
     display: flex;
     flex-direction: column;
+    transition: all ease 0.5s;
 
 }
 .search{
@@ -169,6 +186,8 @@ body{
     
     background-color: var(--content-bar);
     overflow-y: auto;
+    transition: all ease 0.5s;
+
 }
 
 .chatlist::-webkit-scrollbar{
