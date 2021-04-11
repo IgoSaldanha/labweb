@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
 export default (showProfile) => {
@@ -6,7 +6,7 @@ export default (showProfile) => {
   const showp = showProfile;
 
   return (
-    <div className="profileWindow"  style={{left: showp? 3000: '25%'}}>
+    <div className="profileWindow">
       <div>
         {console.log(showp)}
       </div>
