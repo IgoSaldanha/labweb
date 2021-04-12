@@ -13,6 +13,7 @@
     --line: #18191f;
     --contact-item-selected: #313341;
     --text-color: #FFFFFF;
+    --text-color-title-form: #7c7c7c;
     --bg-message-user: #404046; 
     --bg-message-contact: #191A21;
     --text-message-date: rgba(238, 238, 238, 0.8);
@@ -34,6 +35,7 @@
     --line: #989db9;
     --contact-item-selected: #9F9F9F;
     --text-color: #313131;
+    --text-color-title-form: #252525;
     --bg-message-user: #9F9F9F;
     --bg-message-contact: #38393f;
     --text-message-date: rgba(238, 238, 238, 0.8);
