@@ -1,22 +1,23 @@
 .profileWindow{
-  width: 75%;
-  height: 100%;
-  left: unset;
-  background-color: var(--content-area);
-  position: fixed;
+  
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  z-index: 2;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all ease 0.5s;
-
+  justify-content: center;
+  background-color: var(--bg-profile);
+  transition: all ease 1s;
+  
 }
 
 /* AREA GERAL DE CONFIGURAÇÃO */
 .profile-window-config{
 
-  margin-top: 50px;
-  width: 75%;
+  width: 60%;
   height: auto;
   background-color: var(--content-bar);
   border-radius: 10px;
@@ -44,7 +45,7 @@
   width: 70px;
   height: 70px;
   border-radius: 35px;
-  margin: 1.2rem;
+  margin: 1rem;
 
 }
 
@@ -53,10 +54,25 @@
     color: var(--text-color);
 }
 
-.header-profile-more{
+.header-profile-close{
+
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   margin-right: 2rem;
   color: var(--icons);
 }
+
+.header-profile-close:hover{
+  background-color: var(--hover-button);
+  transition-duration: 0.1s;
+}
+
+
 
 /* FORMULARIO DE CONFIGURAÇÃO */
 
@@ -68,10 +84,10 @@
 .content-profile-items{
     display: flex;
     justify-content: space-between;
-    margin: 1.2rem 1.5rem;
+    margin: 1rem 1.5rem;
     background-color: var(--content-area);
     border-radius: 10px;
-    padding: 0.4rem 0.8rem;
+    padding: 0.3rem 0.8rem;
     align-items: center;
 }
 
@@ -96,8 +112,8 @@
 
 .button-profile{
 
-    width: 6rem;
-    height: 3rem;
+    width: 5.5rem;
+    height: 2.5rem;
     border-radius: 0.3rem;
     background-color: var(--available);
     display: flex;
@@ -109,8 +125,45 @@
 }
 
 .button-profile:hover{
-    width: 5.5rem;
-    height: 2.5rem;
+    width: 6rem;
+    height: 3rem;
+  }
+
+.divider{
+  margin: 1.5rem 1.5rem;
+}
+
+hr{
+  border-color: var(--line);
 }
 
 /* EXCLUSÃO DE CONTA */
+
+.remove-account{
+
+  display: flex;
+  justify-content: space-between;
+  margin: 1.4rem 1.5rem;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 0.3rem 0.8rem;
+  align-items: center;
+}
+
+.button-profile-remove{
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    background-color: var(--unavailable);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+
+.button-profile-remove:hover{
+  width: 8.5rem;
+  height: 3rem;
+}

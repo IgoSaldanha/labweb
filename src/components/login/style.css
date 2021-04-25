@@ -1,0 +1,112 @@
+.login{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--bg-message-contact);
+
+}
+
+.logo img{
+  width: 315px;
+  height: 140px;
+}
+
+.auth-area{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 40rem;
+  height: auto;
+  border-radius: 2rem;
+  background: var(--content-bar);
+  margin: 0;
+
+  padding: 1rem;
+}
+
+.form-auth {
+
+}
+
+.item{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.item label{
+  color: var(--text-color);
+  margin: 0.2rem 0;
+  font-size: 1.2rem;
+}
+
+.item input{
+  width: 30rem;
+  height: 3rem;
+  text-decoration: none;
+  outline: none;
+  background: transparent;
+  border-style: none;
+  border-bottom: 1px solid white;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button button{
+  margin-top: 0.5rem;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--available);
+  text-decoration: none;
+  border-style: none;
+  cursor: pointer;
+
+}
+
+.or{
+  color: var(--text-area);
+}
+
+.button button:hover{
+  background-color: #39976d;
+}
+
+.auht-google{
+
+  width: 15rem;
+  height: 3rem;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+}
+
+.auht-google:hover{
+  background-color: rgb(235, 235, 235);
+}
+
+.auht-google img{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 1rem;
+}
+

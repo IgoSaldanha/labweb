@@ -2,10 +2,12 @@ import React from 'react';
 import './style.css'
 
 export default () => {
-  return (
-    <div className="chatIntro"> 
-        <h1>Seja Bem-Vindo</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam accusantium iure explicabo, adipisci ullam quis non maxime hic sunt dolores voluptatem doloremque soluta minus in, praesentium, nobis nulla porro veniam?</p>
-    </div>
-  );
+    return (
+        <div className="chatIntro">
+            <div className="logo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/logo.webp?alt=media&token=ccae5cd9-651b-4a70-8ab1-0fed5acf12ee" alt="" />
+            </div>
+            <p>Converse a vontate com seus amiguinhos, aqui seus mensagens estão seguras e não serão compartilhadas terceiros.</p>
+        </div>
+    );
 }

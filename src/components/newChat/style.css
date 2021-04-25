@@ -4,6 +4,7 @@
     height: 100%;
     position: fixed;
     left: unset;
+    z-index: 1;
     background-color: var(--content-bar);
     display: flex;
     flex-direction: column;

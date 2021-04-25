@@ -9,19 +9,27 @@
   transition: all ease 0.5s;
 }
 
+.logo img{
+  width: 472.5px;
+  height: 210px;
+  
+}
+
 .chatIntro h1{
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--text-color);
 }
 
 .chatIntro p{
   color: var(--text-color);
   font-weight: normal;
-  line-height: 20px;
+  line-height: 2rem;
+  letter-spacing: 1px;
   font-size: 0.8rem;
   margin-top: 20px;
   text-align: center;
   padding: 0 20px;
+  font-size: 1.2rem;
 }
 
 

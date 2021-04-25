@@ -2,22 +2,36 @@ import React, { useState } from 'react';
 import './style.css';
 
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import CloseIcon from '@material-ui/icons/Close';
 
-export default (showProfile) => {
+export default ({showProfileWindow , setShowProfileWindow, user}) => {
 
+    const onClose = () => {
+        setShowProfileWindow(!showProfileWindow)
+    }
 
+    console.log(user);
+    const handleOutsideClick = (e) => {
+        if (e.target.id === 'modalPorfile') onClose();
+    };
+
+    const handleCLoseButton = () => {
+        onClose();
+    }
 
     return (
-        <div className="profileWindow" style={{ left: showProfile ? '25%' : 3000 }}>
+
+        <div id="modalPorfile" className="profileWindow" onClick={handleOutsideClick}>
 
             <div className="profile-window-config">
+
                 <div className="hearder-profile">
                     <div className="header-profile-info">
-                        <img clasName="profile-avatar" src="https://avatars.githubusercontent.com/u/59894220?s=60&v=4" alt=""/>
-                        <p>Igo Saldanha</p>
+                        <img clasName="profile-avatar" src={user.avatar} alt="" />
+                        <p>{user.name}</p>
                     </div>
-                    <div className="header-profile-more">
-                        <MoreHorizIcon style={{ fontSize: 30 }}/>
+                    <div className="header-profile-close" onClick={handleCLoseButton}>
+                        <CloseIcon style={{ fontSize: 30 }} />
                     </div>
                 </div>
 
@@ -26,7 +40,7 @@ export default (showProfile) => {
                     <div className="content-profile-items">
                         <div className="content-info">
                             <p>Código de convite</p>
-                            <div>10290373</div>
+                            <div>{user.id}</div>
                         </div>
                         <div className="button-profile">Copiar</div>
                     </div>
@@ -34,7 +48,7 @@ export default (showProfile) => {
                     <div className="content-profile-items">
                         <div className="content-info">
                             <p>Usuario</p>
-                            <div>Igo Saldanha</div>
+                            <div>{user.name}</div>
                         </div>
                         <div className="button-profile">Editar</div>
                     </div>
@@ -42,16 +56,23 @@ export default (showProfile) => {
                     <div className="content-profile-items">
                         <div className="content-info">
                             <p>Email</p>
-                            <div>igo@gmail.com</div>
+                            <div>{user.email}</div>
                         </div>
                         <div className="button-profile">Editar</div>
                     </div>
+                    <hr className="divider" noshade="noshade"/>
+                    <div className="remove-account">
+                        <div className="content-info">
+                            <p>EXCLUIR CONTA</p>
+                        </div>
+                        <div className="button-profile-remove">Excluir Conta</div>
+                    </div>
 
                 </div>
-            </div>
-            <div className="remove-account">
 
+    
             </div>
+
         </div>
     );
 }
