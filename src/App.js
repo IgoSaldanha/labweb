@@ -25,13 +25,7 @@ export default () => {
 
 
     // STATE DE USUARIO
-    const [user, setUser] = useState({
-        id: 123,
-        avatar: 'https://avatars.githubusercontent.com/u/59894220?s=60&v=4',
-        name: 'Igo Saldanha'
-    }
-
-    );
+    const [user, setUser] = useState(null);
 
     // MOSTRAR OU NÃO JANELA DE PERFIL
     const [showProfileWindow, setShowProfileWindow] = useState(false);
@@ -68,22 +62,22 @@ export default () => {
         setUser(newUser);
     }
 
-    /*
+
     useEffect(() => {
         if (user !== null) {
             let unsub = Api.onChatList(user.id, setChatList);
             return unsub;
         }
     }, [user]);
-    
-    */
+
+
 
     if (user === null) {
         return (
             <Login onReceive={handleLoginData} />
         )
     }
-    
+
 
     return (
 
@@ -188,6 +182,7 @@ export default () => {
                     {activeChat.chatId !== undefined &&
                         <ChatWindow
                             user={user}
+                            data={activeChat}
                         />
                     }
                     {activeChat.chatId === undefined &&
