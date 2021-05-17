@@ -22,35 +22,32 @@ export default () => {
 
     //DECLARAÇÃO DE CONSTANTES
     const [chatList, setChatList] = useState([]);
-
-
-    // STATE DE USUARIO
-    const [user, setUser] = useState(null);
-
-    // MOSTRAR OU NÃO JANELA DE PERFIL
+    const [user, setUser] = useState({ id: 'sahsai', name: 'Zezim' });
     const [showProfileWindow, setShowProfileWindow] = useState(false);
+    const [showNewChat, setShowNewChat] = useState(false);
+    const [activeChat, setActiveChat] = useState({});
+
+
+    // FUNCTIONS
+
+    // Mostrar Modal de Perfil
     const handleToogleProfileWindow = () => {
         setShowProfileWindow(!showProfileWindow)
         console.log(showProfileWindow)
     }
 
-    // MOSTRAR OU NÃO BARRA DE NEW CHAT
-    const [showNewChat, setShowNewChat] = useState(false);
-
+    // Mostrar Barra de NewChat
     const handleToogleNewChat = () => {
         setShowNewChat(!showNewChat)
     }
 
-
-    // STATE PARA GURADAR CHAT ATIVO
-    const [activeChat, setActiveChat] = useState({});
-
-    // FUNÇÃO PARA TROCA DE TEMA
+    // Trocar de Tema
     const html = document.querySelector('html');
     function toogleTheme() {
         html.classList.toggle('light-mode')
     }
 
+    // Adicionar novo usuario no Banco
     const handleLoginData = async (u) => {
         let newUser = {
             id: u.uid,
@@ -62,7 +59,7 @@ export default () => {
         setUser(newUser);
     }
 
-
+    // Monitorar lista de chats
     useEffect(() => {
         if (user !== null) {
             let unsub = Api.onChatList(user.id, setChatList);
@@ -70,8 +67,7 @@ export default () => {
         }
     }, [user]);
 
-
-
+    // Verificar se tem usuario Autenticado
     if (user === null) {
         return (
             <Login onReceive={handleLoginData} />
@@ -103,6 +99,7 @@ export default () => {
             */}
 
             <div className="app-content">
+
 
                 {
                     showProfileWindow ?
@@ -145,13 +142,6 @@ export default () => {
                 {/* Sidebar */}
                 <div className="sidebar">
 
-                    <NewChat
-                        chatList={chatList}
-                        user={user}
-                        show={showNewChat}
-                        setShow={setShowNewChat}
-                    />
-
                     {/* Campo de busca */}
                     <div className="search">
                         <div className="search-input">
@@ -192,6 +182,19 @@ export default () => {
                 </div>
 
             </div>
+
+            {
+                showNewChat ?
+                    <NewChat
+                        chatList={chatList}
+                        user={user}
+                        show={showNewChat}
+                        setShow={setShowNewChat}
+                    />
+                    :
+                    null
+            }
+
 
         </div>
     )

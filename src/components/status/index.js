@@ -26,14 +26,14 @@ export default () => {
         <div>
             <div className="status-item" onClick={handleShowtoggleStatus}>
                 <div className="toggle-status" style={{
-                   
+
                 }}>
 
                 </div>
             </div>
 
 
-            <div className="modal-toggle-status" style={{visibility: showModalStatus? 'unset':'hidden'}}>
+            <div className="modal-toggle-status" style={{ visibility: showModalStatus ? 'unset' : 'hidden' }}>
 
                 <div id="avaliable" className="modal-item">
                     <p>Disponível</p>

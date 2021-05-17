@@ -17,32 +17,49 @@ export default ({ chatList, user, show, setShow }) => {
         getList();
     }, [user]);
 
+    const handleOutsideClick = (e) => {
+        if (e.target.id === 'modal-newChat') handleClose();
+    };
+
+    const handleClose = () => {
+        setShow(false);
+    }
+
     const addNewChat = async (user2) => {
+
         await Api.addNewChat(user, user2);
+        handleClose()
     }
 
     return (
-        <div className="newChat" style={{ left: show ? '5%' : -600 }}>
 
-            <div className="newChat-head">
+        <div id="modal-newChat" className="modal-overlay-newChat" onClick={handleOutsideClick}>
 
-                <div className="newChat-search">
-                    <div className="newChat-search-input">
-                        <SearchIcon fontSize="small" />
-                        <input type="search" placeholder="Nova conversa" />
+            <div className="modal-newChat">
+
+                <div className="newChat-head">
+
+                    <div className="newChat-search">
+                        <div className="newChat-search-input">
+                            <SearchIcon fontSize="small" />
+                            <input type="search" placeholder="Nova conversa" />
+                        </div>
+
                     </div>
                 </div>
+
+
+                <div className="newChat-list">
+                    {list.map((item, key) => (
+                        <div onClick={() => addNewChat(item)} className="newChat-item">
+                            <img className="newChat-item-avatar" src={item.avatar} alt="" />
+                            <div className="newChat-item-name">{item.name}</div>
+                        </div>
+                    ))}
+                </div>
+
             </div>
 
-            <div className="newChat-list">
-                {list.map((item, key) => (
-                    <div onClick={()=>addNewChat(item)} className="newChat-item">
-                        <img className="newChat-item-avatar" src={item.avatar} alt="" />
-                        <div className="newChat-item-name">{item.name}</div>
-                    </div>
-                ))}
-            </div>
-
-        </div>
+        </div >
     );
 }

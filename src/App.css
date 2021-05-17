@@ -65,6 +65,7 @@ body{
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
   background-color: var(--content-area);
 
 }
@@ -114,7 +115,8 @@ body{
 /* ----------------------------------- */
 
 .app-content{
-    height: 90%;
+
+    height: 100%;
     display: flex;
     background-color: var(--content-area);
 
@@ -123,8 +125,8 @@ body{
 /* ------ Barra de ferramentas ------ */
 
 .toolbar{
-    width: 5%;
-    max-width: 120px;
+
+    width: 4.5rem;
     background-color: var(--toolbar);
     
     display: flex;
@@ -159,8 +161,7 @@ body{
 
 .sidebar{
     
-    width: 20%;
-    max-width: 500px;
+    width: min(20rem, 80rem);
     background-color: var(--content-bar);
     border-right: 1px solid var(--line);
     display: flex;
@@ -208,8 +209,23 @@ body{
     border-radius: 4px;
 
 }
+
 /* ------ Area de janelas ------ */
 
 .content-area{
     flex: 1;
+}
+
+
+@media (max-width: 700px) { 
+
+    html {
+        font-size: 87.5%;
+    }
+
+    #root{
+        display: none;
+        
+    }
+
 }
