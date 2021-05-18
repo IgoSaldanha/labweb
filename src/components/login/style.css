@@ -70,6 +70,7 @@
   height: 3rem;
   border-radius: 0.8rem;
   font-size: 1rem;
+  font-weight: 500;
   color: var(--text-color);
   background-color: var(--available);
   text-decoration: none;
@@ -100,6 +101,11 @@
 
 }
 
+.auht-google p {
+  font-weight: bold;
+  opacity: 0.9;
+  color: var(--content-bar);
+}
 .auht-google:hover{
   background-color: rgb(235, 235, 235);
 }

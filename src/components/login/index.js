@@ -44,8 +44,8 @@ export default ({ onReceive }) => {
                 <p className="or">ou</p>
 
                 <div onClick={handleGoogleLogin} className="auht-google">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/pesquisa.png?alt=media&token=2ab0aa1c-cb30-4be4-9280-d5a5ea16adaf" alt=""/>
-                    <div>Entrar com Google</div>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/pesquisa.png?alt=media&token=2ab0aa1c-cb30-4be4-9280-d5a5ea16adaf" alt="" />
+                    <p>Entrar com Google</p>
                 </div>
 
             </div>

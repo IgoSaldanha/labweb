@@ -10,6 +10,7 @@ import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 import CloseIcon from '@material-ui/icons/Close';
 import MessageItem from './messageItem/index'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default ({ user, data }) => {
 
@@ -105,9 +106,6 @@ export default ({ user, data }) => {
         }
     }
 
-
-
-
     return (
 
         // JANELA PRINCIPAL DE CHAT //
@@ -123,12 +121,13 @@ export default ({ user, data }) => {
 
                 <div className="chatWindow-header-buttons">
                     <div className="chatWindow-button">
-                        <MoreVertIcon style={{ fontSize: 30 }} />
+                        <DeleteIcon style={{ fontSize: 30 }}/>
                     </div>
                 </div>
             </div>
 
             {/* ÁREA DE MENSAGENS */}
+
             <div ref={body} className="chatWindow-body">
                 {
                     list.map((item, key) => (
@@ -174,9 +173,11 @@ export default ({ user, data }) => {
                         <InsertEmoticonIcon style={{ fontSize: 30, color: emojiOpen ? '43B581' : '' }} />
                     </div>
 
+                    {/* 
                     <div className="chatWindow-button">
                         <AddPhotoAlternateIcon style={{ fontSize: 30 }} />
                     </div>
+                    */}
 
                 </div>
 

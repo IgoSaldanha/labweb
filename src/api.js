@@ -15,12 +15,31 @@ export default {
         return result;
     },
 
+    singOut: () => {
+
+        firebase.auth().signOut().then(() => {
+            console.log('Sucesso')
+        }).catch((error) => {
+            console.log('Erro')
+        });
+    },
+
     addUser: async (u) => {
         await db.collection('users').doc(u.id).set({
             name: u.name,
             avatar: u.avatar,
             email: u.email
         }, { merge: true });
+    },
+
+    removeUser: (userId) => {
+
+        db.collection("users").doc(userId).delete().then(() => {
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+
     },
 
     getContactList: async (userId) => {
@@ -41,7 +60,7 @@ export default {
     },
 
     addNewChat: async (user, user2) => {
-        
+
         let newChat = await db.collection('chats').add({
             messages: [],
             users: [user.id, user2.id]
@@ -64,6 +83,24 @@ export default {
                 with: user.id
             })
         });
+    },
+
+    removeChat: async (chatId) => {
+
+        await db.collection("chats").doc(chatId).delete();
+    },
+
+    deleteChat: async (user, key) => {
+
+        var Ref = db.collection('users').doc(user);
+
+        // Remove the 'capital' field from the document
+        var upDoc = Ref.update({
+            chats: firebase.firestore.FieldValue.delete(key)
+        });
+
+        console.log(upDoc);
+
     },
 
     onChatList: (userId, setChatList) => {

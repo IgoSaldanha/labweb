@@ -22,7 +22,7 @@ export default () => {
 
     //DECLARAÇÃO DE CONSTANTES
     const [chatList, setChatList] = useState([]);
-    const [user, setUser] = useState({ id: 'sahsai', name: 'Zezim' });
+    const [user, setUser] = useState(null);
     const [showProfileWindow, setShowProfileWindow] = useState(false);
     const [showNewChat, setShowNewChat] = useState(false);
     const [activeChat, setActiveChat] = useState({});
@@ -74,6 +74,17 @@ export default () => {
         )
     }
 
+    // Faz Logout 
+    const handleLogout = () => {
+
+        let confirm = window.confirm("Deseja sair do sistema?")
+        if (confirm) {
+            Api.singOut();
+            setUser(null);
+        }
+
+    }
+
 
     return (
 
@@ -105,6 +116,7 @@ export default () => {
                     showProfileWindow ?
                         <ProfileWindow
                             user={user}
+                            setUser={setUser}
                             showProfileWindow={showProfileWindow}
                             setShowProfileWindow={setShowProfileWindow}
                         />
@@ -123,17 +135,12 @@ export default () => {
                         <Brightness6Icon style={{ fontSize: 30 }} />
                     </div>
 
-                    {/* 
-                    <div className="tool-button">
-                        <PlaylistAddCheckIcon style={{ fontSize: 30 }} />
-                    </div>
-                    */}
 
                     <div onClick={handleToogleNewChat} className="tool-button">
                         <ChatBubbleIcon style={{ fontSize: 30 }} />
                     </div>
 
-                    <div className="tool-button">
+                    <div className="tool-button" onClick={handleLogout} >
                         <PowerSettingsNewIcon style={{ fontSize: 30 }} />
                     </div>
 
