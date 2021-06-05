@@ -1,52 +1,46 @@
-.login{
-
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   background-color: var(--bg-message-contact);
-
 }
 
-.logo img{
+.logotipo img {
   width: 315px;
   height: 140px;
 }
 
-.auth-area{
-
+.auth-area {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   width: 40rem;
   height: auto;
   border-radius: 2rem;
   background: var(--content-bar);
   margin: 0;
-
   padding: 1rem;
 }
 
-.form-auth {
+.form-auth {}
 
-}
-
-.item{
+.item {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
 }
 
-.item label{
+.item label {
   color: var(--text-color);
   margin: 0.2rem 0;
   font-size: 1.2rem;
 }
 
-.item input{
+.item input {
   width: 30rem;
   height: 3rem;
   text-decoration: none;
@@ -58,13 +52,13 @@
   font-size: 1rem;
 }
 
-.button{
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.button button{
+.button button {
   margin-top: 0.5rem;
   width: 15rem;
   height: 3rem;
@@ -76,19 +70,17 @@
   text-decoration: none;
   border-style: none;
   cursor: pointer;
-
 }
 
-.or{
+.or {
   color: var(--text-area);
 }
 
-.button button:hover{
+.button button:hover {
   background-color: #39976d;
 }
 
-.auht-google{
-
+.auht-google {
   width: 15rem;
   height: 3rem;
   border-radius: 0.8rem;
@@ -98,7 +90,6 @@
   background-color: white;
   margin-bottom: 0.5rem;
   cursor: pointer;
-
 }
 
 .auht-google p {
@@ -106,13 +97,74 @@
   opacity: 0.9;
   color: var(--content-bar);
 }
-.auht-google:hover{
+
+.auht-google:hover {
   background-color: rgb(235, 235, 235);
 }
 
-.auht-google img{
+.auht-google img {
   width: 1.5rem;
   height: 1.5rem;
   margin: 0 1rem;
 }
 
+@media (max-width: 425px) {
+  .auth-area {
+    width: 380px;
+  }
+  .item label {
+    font-size: 1.1rem;
+  }
+  .item input {
+    width: 300px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 375px) {
+  .auth-area {
+    background: transparent;
+    width: 375px;
+  }
+  .item input {
+    width: 240px;
+    height: 30px;
+  }
+  .logotipo img {
+    width: 280px;
+    height: 124px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-message-contact);
+  }
+  .auth-area {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    border-radius: 2rem;
+    background: var(--content-bar);
+    margin: 0;
+    padding: 1rem;
+    background: transparent;
+  }
+  .item input {
+    width: 240px;
+    height: 30px;
+  }
+  .logotipo img {
+    width: 280px;
+    height: 124px;
+  }
+}

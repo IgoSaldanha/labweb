@@ -1,0 +1,25 @@
+.profileImage{
+  
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-profile);
+  transition: all ease 1s;
+  
+}
+
+.full-image{
+
+  width: 500px;
+  height: 500px;
+  border-radius: 250px;
+  border: 10px solid var(--icons);
+
+}
+

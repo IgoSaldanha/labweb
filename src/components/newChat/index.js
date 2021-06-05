@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 export default ({ chatList, user, show, setShow }) => {
 
     const [list, setList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         const getList = async () => {
@@ -27,8 +28,25 @@ export default ({ chatList, user, show, setShow }) => {
 
     const addNewChat = async (user2) => {
 
-        await Api.addNewChat(user, user2);
-        handleClose()
+        console.log(user2.id)
+        let withChat;
+
+        chatList.map((item, key) => {
+
+            if (item.with === user2.id) {
+                withChat = true;
+            } else {
+                withChat = false;
+            }
+        })
+
+        if (withChat) {
+            handleClose()
+        } else {
+            await Api.addNewChat(user, user2);
+            handleClose()
+        }
+
     }
 
     return (
@@ -42,7 +60,7 @@ export default ({ chatList, user, show, setShow }) => {
                     <div className="newChat-search">
                         <div className="newChat-search-input">
                             <SearchIcon fontSize="small" />
-                            <input type="search" placeholder="Nova conversa" />
+                            <input type="search" placeholder="Nova conversa" onChange={event => { setSearchTerm(event.target.value) }} />
                         </div>
 
                     </div>
@@ -50,12 +68,20 @@ export default ({ chatList, user, show, setShow }) => {
 
 
                 <div className="newChat-list">
-                    {list.map((item, key) => (
+
+                    {list.filter((val) => {
+                        if (searchTerm === "") {
+                            return val
+                        } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            return val
+                        }
+                    }).map((item, key) => (
                         <div onClick={() => addNewChat(item)} className="newChat-item">
                             <img className="newChat-item-avatar" src={item.avatar} alt="" />
                             <div className="newChat-item-name">{item.name}</div>
                         </div>
                     ))}
+
                 </div>
 
             </div>

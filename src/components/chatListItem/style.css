@@ -8,10 +8,20 @@
     align-items: center;
     height: 70px;
     border-radius: 20px;
+    justify-content: space-between;
 
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     margin-bottom: 0.3rem;
+}
+
+.chat-info{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .chatListItem:hover{
@@ -23,19 +33,42 @@
 }
 
 .chatListItem-avatar{
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    margin-left: 15px;
+    width: 42px;
+    height: 42px;
+    border-radius: 21px;
     margin-right: 15px;
 }
 
 .chatListItemName{
+
     display: flex;
-    width: 100%;
-    font-size: 1rem;
+    width: 10rem;
+    height: 3rem;
+    
+    align-items: center;
+    font-size: 1.05rem;
     color: var(--text-color);
 }
+
+.chat-delete{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--icons);
+    margin-right: 10px;
+
+}
+
+.chat-delete:hover{
+   
+    color: var(--trash);
+}
+
 
 .newChat-list::-webkit-scrollbar{
     width: 8px;

@@ -3,21 +3,23 @@ import './style.css';
 import Api from '../../Api'
 
 export default ({ onReceive }) => {
+
     const handleGoogleLogin = async () => {
         let result = await Api.goPopup();
 
         if (result) {
-            alert("logado")
+            console.log(result.user)
             onReceive(result.user)
         } else {
             alert('Erro!');
         }
     }
+
     return (
 
         <div className="login">
 
-            <div className="logo">
+            <div className="logotipo">
                 <img src="https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/logo.webp?alt=media&token=ccae5cd9-651b-4a70-8ab1-0fed5acf12ee" alt="" />
             </div>
 

@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import './style.css';
 import Api from '../../Api'
 
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import CloseIcon from '@material-ui/icons/Close';
+import ConfirmAlert from '../confirmAlert/index'
+
 
 export default ({ showProfileWindow, setShowProfileWindow, user, setUser }) => {
+
+
+    const [showConfirmDeleteUser, setShowConfirmDeleteUser] = useState(false);
 
     const onClose = () => {
         setShowProfileWindow(!showProfileWindow)
@@ -19,21 +23,36 @@ export default ({ showProfileWindow, setShowProfileWindow, user, setUser }) => {
         onClose();
     }
 
+    const confirmDelete = () => {
+        setShowConfirmDeleteUser(true)
+    }
+
     const removeUser = async () => {
 
-        let resp = window.confirm("Deseja excluir sua conta?")
-        onClose();
-        if (resp) {
-            await Api.removeUser(user.id);
-            setUser(null);
-            alert("SUA CONTA FOI DELETADA")
+        await Api.removeUser(user.id);
+        setUser(null);
+        localStorage.removeItem('userData')
 
-        }
     }
 
     return (
 
         <div id="modalPorfile" className="profileWindow" onClick={handleOutsideClick}>
+
+            {
+                showConfirmDeleteUser ?
+                    <ConfirmAlert
+
+                        alertTitle={"Deseja exluir sua conta?"}
+                        setShow={setShowConfirmDeleteUser}
+                        exeFunction={removeUser}
+
+                    />
+                    :
+                    null
+            }
+
+
 
             <div className="profile-window-config">
 
@@ -77,7 +96,7 @@ export default ({ showProfileWindow, setShowProfileWindow, user, setUser }) => {
                         <div className="content-info">
                             <p>EXCLUIR CONTA</p>
                         </div>
-                        <div className="button-profile-remove" onClick={removeUser}>Excluir Conta</div>
+                        <div className="button-profile-remove" onClick={confirmDelete}>Excluir Conta</div>
                     </div>
 
                 </div>

@@ -3,9 +3,9 @@ import EmojiPicker from 'emoji-picker-react';
 import './style.css';
 import Api from '../../Api';
 
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+//import MoreVertIcon from '@material-ui/icons/MoreVert';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
-import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
+//import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 import CloseIcon from '@material-ui/icons/Close';
@@ -75,7 +75,9 @@ export default ({ user, data }) => {
     // Controlar o Body, para colocar o Scroll no final
     const body = useRef();
 
+
     useEffect(() => {
+
 
         setList([]);
         let unsub = Api.onChatContent(data.chatId, setList, setUsers);
@@ -93,7 +95,7 @@ export default ({ user, data }) => {
 
     // FUNÇÃO DE ENVIO DE MENSAGENS
     const handleInputKeyUp = (e) => {
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             handleSendClick();
         }
     }
@@ -104,6 +106,13 @@ export default ({ user, data }) => {
             setText('');
             setEmojiOpen(false);
         }
+    }
+
+    const handleDeleteMessages = () => {
+
+        Api.deleteMessages(data.chatId);
+        setList([]);
+
     }
 
     return (
@@ -119,11 +128,15 @@ export default ({ user, data }) => {
                     <div className="chatWindow-name">{data.title}</div>
                 </div>
 
-                <div className="chatWindow-header-buttons">
-                    <div className="chatWindow-button">
-                        <DeleteIcon style={{ fontSize: 30 }}/>
-                    </div>
+
+                <div className="chatWindow-header-buttons" onClick={handleDeleteMessages}>
+
+                    <DeleteIcon style={{ fontSize: 25 }} />
+                    <div className="button-delete-mensages">LIMPAR MENSAGENS</div>
+
                 </div>
+
+
             </div>
 
             {/* ÁREA DE MENSAGENS */}

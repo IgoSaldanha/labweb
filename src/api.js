@@ -59,6 +59,7 @@ export default {
         return list
     },
 
+
     addNewChat: async (user, user2) => {
 
         let newChat = await db.collection('chats').add({
@@ -85,23 +86,65 @@ export default {
         });
     },
 
-    removeChat: async (chatId) => {
+    deleteChat: (user, data) => {
 
-        await db.collection("chats").doc(chatId).delete();
+        db.collection('chats').doc(data.chatId).delete();
+
+        db.collection('users').doc(data.with).update({
+            chats: firebase.firestore.FieldValue.arrayRemove({
+                chatId: data.chatId,
+                title: user.name,
+                image: user.avatar,
+                with: user.id
+            })
+        });
+
+        db.collection('users').doc(user.id).update({
+            chats: firebase.firestore.FieldValue.arrayRemove({
+                chatId: data.chatId,
+                title: data.title,
+                image: data.image,
+                with: data.with
+            })
+        });
+
     },
 
+    /*
+    
+        
+
+    */
+
+
+    deleteMessages: (chat) => {
+
+        db.collection('chats').doc(chat).update({
+            messages: []
+        });
+    },
+
+    /*
+ 
+    removeChat: async (chatId) => {
+ 
+        await db.collection("chats").doc(chatId).delete();
+    },
+ 
     deleteChat: async (user, key) => {
-
+ 
         var Ref = db.collection('users').doc(user);
-
+ 
         // Remove the 'capital' field from the document
         var upDoc = Ref.update({
             chats: firebase.firestore.FieldValue.delete(key)
         });
-
+ 
         console.log(upDoc);
-
+ 
     },
+ 
+    */
 
     onChatList: (userId, setChatList) => {
         return db.collection('users').doc(userId).onSnapshot((doc) => {
@@ -157,7 +200,7 @@ export default {
             if (uData.chat) {
                 let chats = [...uData.chats];
                 for (let e in chats) {
-                    if (chats[e].chatId == chatData.chatId) {
+                    if (chats[e].chatId === chatData.chatId) {
                         chats[e].lastMessage = body;
                         chats[e].lastMessageDate = now;
                     }

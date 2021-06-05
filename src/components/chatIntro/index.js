@@ -5,9 +5,11 @@ export default () => {
     return (
         <div className="chatIntro">
             <div className="logo">
-                <img src="https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/logo.webp?alt=media&token=ccae5cd9-651b-4a70-8ab1-0fed5acf12ee" alt="" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/Logo.png?alt=media&token=52996216-b6d1-400e-a97a-37965238e0dc" alt="" />
             </div>
-            <p>Converse a vontate com seus amiguinhos, aqui seus mensagens estão seguras e não serão compartilhadas terceiros.</p>
+            <h1>Seja Bem-Vindo ao WanChats</h1>
+            <p>Converse a vontate com seu amigos!</p>
+
         </div>
     );
 }

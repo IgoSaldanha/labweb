@@ -1,33 +1,33 @@
 :root {
-
     --top-bar: #191A21;
     --content-bar: #21222C;
     --toolbar: #343746;
-    --scroll: rgba(24,25,31,0.5);
+    --scroll: rgba(24, 25, 31, 0.5);
     --hover-button: #282A36;
     --content-area: #282A36;
     --icons: #5F6E9D;
     --text-area: #B9B9B9;
     --available: #43B581;
     --unavailable: #DE1313;
+    --inactive: rgb(110, 110, 110);
+    --trash: #e24949;
     --offline: #6b6b6b;
     --line: #18191f;
     --contact-item-selected: #313341;
     --text-color: #FFFFFF;
     --text-color-title-form: #7c7c7c;
-    --bg-message-user: #404046; 
+    --bg-message-user: #404046;
     --bg-message-contact: #191A21;
     --text-message-date: rgba(238, 238, 238, 0.8);
     --text-message: #EEEEEE;
     --bg-profile: rgba(0, 0, 0, 0.6);
 }
 
-.light-mode:root{
-
+.light-mode:root {
     --top-bar: #9F9F9F;
     --content-bar: #D6D6D6;
     --toolbar: #B1B1B1;
-    --scroll: rgba(152,157,185,0.5);
+    --scroll: rgba(152, 157, 185, 0.5);
     --hover-button: #EAEAEA;
     --content-area: #EAEAEA;
     --icons: #5F6E9D;
@@ -45,102 +45,53 @@
 }
 
 /* ------ Configurações gerais do projeto ------ */
+
 /* --------------------------------------------- */
 
-*{
-  box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
-
-body{
+body {
     background-color: var(--content-area);
     margin: 0;
     font-family: 'Lato', sans-serif;
 }
 
 /* ------ Janela pricipal do app (viewport) ------ */
+
 /* ----------------------------------------------- */
 
-.app-window{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  background-color: var(--content-area);
-
-}
-
-
-/* ------ top-bar ------ */
-/* --------------------- */
-
-.top-bar{
-
-  height: 10%;
-  max-height: 100px;
-  border-bottom: 0.5px solid var(--line);
-  background-color: var(--top-bar);
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all ease 0.5s;
-
-}
-.avatar{
+.app-window {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-right: 1rem;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--content-area);
 }
 
-.user-avatar{
-    
+.user-avatar {
     width: 40px;
     height: 40px;
     border-radius: 20px;
     cursor: pointer;
-    margin-right: 1rem;
-}
-
-.app-brand{
-    color: var(--text-color);
-    margin-left: 1rem;
-}
-/* ------ Conteudo da aplicação ------ */
-/* ----------------------------------- */
-
-.app-content{
-
-    height: 90%;
-    display: flex;
-    background-color: var(--content-area);
-
 }
 
 /* ------ Barra de ferramentas ------ */
 
-.toolbar{
-
+.toolbar {
     width: 4rem;
     height: 100%;
     background-color: var(--toolbar);
-    
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     border-right: 0.5px solid var(--line);
     transition: all ease 0.5s;
-
 }
 
-.tool-button{
-
+.tool-button {
     width: 50px;
     height: 50px;
     border-radius: 25px;
@@ -149,34 +100,37 @@ body{
     align-items: center;
     cursor: pointer;
     margin-bottom: 5px;
-
     color: var(--icons);
 }
 
-.tool-button:hover{
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tool-button:hover {
     background-color: var(--hover-button);
     transition-duration: 0.1s;
 }
 
 /* ------ Barra lateral - sidebar ------ */
 
-.sidebar{
-    
-    width: min(16.5rem, 80rem);
+.sidebar {
+    width: min(20rem, 80rem);
     height: 100%;
     background-color: var(--content-bar);
     border-right: 1px solid var(--line);
     display: flex;
     flex-direction: column;
     transition: all ease 0.5s;
-
 }
-.search{
+
+.search {
     border-bottom: var(--line);
     padding: 10px 10px;
 }
-.search-input{
 
+.search-input {
     background-color: var(--text-area);
     height: 40px;
     border-radius: 10px;
@@ -185,7 +139,7 @@ body{
     padding: 0 10px;
 }
 
-.search-input input{
+.search-input input {
     flex: 1;
     border: 0;
     outline: 0;
@@ -193,41 +147,42 @@ body{
     margin-left: 10px;
 }
 
-.chatlist{
-    
+.chatlist {
     background-color: var(--content-bar);
     overflow-y: auto;
     transition: all ease 0.5s;
-
 }
 
-.chatlist::-webkit-scrollbar{
+.chatlist::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
-.chatlist::-webkit-scrollbar-thumb{
+.chatlist::-webkit-scrollbar-thumb {
     background-color: var(--scroll);
     border-radius: 4px;
-
 }
 
 /* ------ Area de janelas ------ */
 
-.content-area{
+.content-area {
     flex: 1;
 }
 
-
-@media (max-width: 700px) { 
-
+@media (max-width: 768px) {
     html {
         font-size: 87.5%;
     }
-
-    #root{
-        display: none;
-        
+    .content-area {
+        width: 768px;
     }
+}
 
+@media (max-width: 375px) {
+    .app-window {
+        height: 100vh;
+    }
+    .top-bar {
+        height: 6%;
+    }
 }
