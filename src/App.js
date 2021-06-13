@@ -21,6 +21,7 @@ import ProfileImage from './components/profileImage/index'
 import Login from './components/login/index'
 import NoCompatible from './components/noCompatible/index'
 import ConfirmAlert from './components/confirmAlert/index'
+import NoNetwork from './components/noNetwork/index'
 
 export default () => {
 
@@ -39,6 +40,21 @@ export default () => {
     const [profileImageActive, setProfileImageActive] = useState('');
 
     const [showConfirmLogout, setShowConfirmLogout] = useState(false);
+
+    window.addEventListener("online", function (e) {
+
+    }, false);
+
+
+    const verifyConnection = () => {
+
+        window.location.reload()
+
+    }
+
+    window.addEventListener("offline", verifyConnection)
+
+
 
 
     if (screenWidth < 768) {
@@ -179,6 +195,7 @@ export default () => {
 
                 <div onClick={toogleTheme} className="tool-button">
                     <Brightness6Icon style={{ fontSize: 30 }} />
+                    
                 </div>
 
 

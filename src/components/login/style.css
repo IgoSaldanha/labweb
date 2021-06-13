@@ -1,94 +1,44 @@
 .login {
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/bg-boasvindas.webp?alt=media&token=08174658-0e88-4a00-86f9-2808ab7569c5");
+}
+
+.navBar {
   background-color: var(--bg-message-contact);
+  justify-content: center;
+}
+
+.navBar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: min(90vw, 1200px);
+  margin: auto;
+}
+
+.navBar ul li {
+  margin: 0 4.5rem;
 }
 
 .logotipo img {
-  width: 315px;
-  height: 140px;
-}
-
-.auth-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 40rem;
-  height: auto;
-  border-radius: 2rem;
-  background: var(--content-bar);
-  margin: 0;
-  padding: 1rem;
-}
-
-.form-auth {}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
-}
-
-.item label {
-  color: var(--text-color);
-  margin: 0.2rem 0;
-  font-size: 1.2rem;
-}
-
-.item input {
-  width: 30rem;
-  height: 3rem;
-  text-decoration: none;
-  outline: none;
-  background: transparent;
-  border-style: none;
-  border-bottom: 1px solid white;
-  color: var(--text-color);
-  font-size: 1rem;
-}
-
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.button button {
-  margin-top: 0.5rem;
-  width: 15rem;
-  height: 3rem;
-  border-radius: 0.8rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-color);
-  background-color: var(--available);
-  text-decoration: none;
-  border-style: none;
-  cursor: pointer;
-}
-
-.or {
-  color: var(--text-area);
-}
-
-.button button:hover {
-  background-color: #39976d;
+  width: 200px;
+  height: 88px;
 }
 
 .auht-google {
   width: 15rem;
   height: 3rem;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
-  margin-bottom: 0.5rem;
   cursor: pointer;
 }
 
@@ -108,63 +58,62 @@
   margin: 0 1rem;
 }
 
-@media (max-width: 425px) {
-  .auth-area {
-    width: 380px;
-  }
-  .item label {
-    font-size: 1.1rem;
-  }
-  .item input {
-    width: 300px;
-    height: 50px;
-  }
+.content {
+  width: min(90vw, 1200px);
+  margin: auto;
 }
 
-@media (max-width: 375px) {
-  .auth-area {
-    background: transparent;
-    width: 375px;
-  }
-  .item input {
-    width: 240px;
-    height: 30px;
-  }
-  .logotipo img {
-    width: 280px;
-    height: 124px;
-  }
+.item {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem 2.5rem;
+  justify-content: space-between;
 }
 
-@media (max-width: 320px) {
-  .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: var(--bg-message-contact);
-  }
-  .auth-area {
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: auto;
-    border-radius: 2rem;
-    background: var(--content-bar);
-    margin: 0;
-    padding: 1rem;
-    background: transparent;
-  }
-  .item input {
-    width: 240px;
-    height: 30px;
-  }
-  .logotipo img {
-    width: 280px;
-    height: 124px;
-  }
+.dest {
+  background: rgba(255, 255, 255, 0.021);
+  border-radius: 10px;
 }
+
+.text {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 400px;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.text h2 {
+  font-size: 2.5rem;
+  color: var(--icons);
+  font-weight: bolder;
+}
+
+.text p {
+  line-height: 2;
+  font-size: 1.2rem;
+}
+
+.img {
+  margin: 2rem;
+}
+
+.img img {
+  width: 500px;
+  height: 500px;
+}
+
+.footer {
+  display: flex;
+  background-color: var(--bg-message-contact);
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 425px) {}
+
+@media (max-width: 375px) {}
+
+@media (max-width: 320px) {}

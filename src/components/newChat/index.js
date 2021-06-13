@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import Api from '../../Api';
 import SearchIcon from '@material-ui/icons/Search';
+import { LocalConvenienceStoreOutlined } from '@material-ui/icons';
 
 export default ({ chatList, user, show, setShow }) => {
 
@@ -28,24 +29,22 @@ export default ({ chatList, user, show, setShow }) => {
 
     const addNewChat = async (user2) => {
 
-        console.log(user2.id)
         let withChat;
 
         chatList.map((item, key) => {
 
-            if (item.with === user2.id) {
+            if (item.with == user2.id) {
                 withChat = true;
-            } else {
-                withChat = false;
             }
+
         })
 
-        if (withChat) {
-            handleClose()
-        } else {
+        if (!withChat) {
             await Api.addNewChat(user, user2);
-            handleClose()
+            withChat = undefined
         }
+
+        handleClose()
 
     }
 

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/wanchat-5f188.appspot.com/o/bg-boasvindas.webp?alt=media&token=08174658-0e88-4a00-86f9-2808ab7569c5");
 }
 
 .chatWindow-header {
@@ -86,7 +87,7 @@
   overflow-y: auto;
   background-size: cover;
   background-position: center;
-  background-color: var(--content-area);
+
   padding: 20px 30px;
   transition: all ease 0.5s;
 }
